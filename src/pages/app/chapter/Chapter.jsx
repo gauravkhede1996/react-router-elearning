@@ -1,12 +1,17 @@
 import React from "react";
 import styles from "./Chapter.module.css";
+import { useParams, useOutletContext } from 'react-router-dom';
 
 function Chapter() {
+  const {chapterId} = useParams();
+  const course = useOutletContext();
+  console.log(course," is the course")
+  const chapter = course.chapters.find((element) => String(element.chapter) === chapterId);
   return (
     <div>
-      <h1>**CHAPTER TITLE**</h1>
-      <h2>**CHAPTER DESCRIPTION**</h2>
-      <p className={styles.para}>**CHAPTER**</p>
+      <h1>{chapter.title}</h1>
+      <h2>{chapter.description}</h2>
+      <p className={styles.para}>{chapter.details}</p>
       <br />
       <br />
       <div className={styles.videos}>

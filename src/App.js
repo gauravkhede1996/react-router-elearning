@@ -5,6 +5,7 @@ import Details from './pages/app/details/Details';
 import Learn from './pages/app/learn/Learn';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorToast from "./components/error-toast/ErrorToast";
+import Chapter from './pages/app/chapter/Chapter';
 
 function App() {
   const browserRouter = createBrowserRouter([
@@ -38,7 +39,16 @@ function App() {
             },
             {
               path:':courseId',
-              element: <Learn />
+              children: [
+                {
+                  path:'',
+                  element: <Learn />,
+                },
+                {
+                  path:'chapter/:chapterId',
+                  element:<Chapter />
+                }
+              ]
             }
           ]
         }
