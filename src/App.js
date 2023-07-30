@@ -4,7 +4,6 @@ import Courses from "./pages/app/courses/Courses";
 import Details from './pages/app/details/Details';
 import Learn from './pages/app/learn/Learn';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ErrorToast from "./components/error-toast/ErrorToast";
 import Chapter from './pages/app/chapter/Chapter';
 
 function App() {
@@ -31,19 +30,12 @@ function App() {
           ]
         },
         {
-          path:'learn',
+          path:'learn/:courseId',
           children: [
             {
               path:'',
-              element:<ErrorToast />
-            },
-            {
-              path:':courseId',
+              element: <Learn />,
               children: [
-                {
-                  path:'',
-                  element: <Learn />,
-                },
                 {
                   path:'chapter/:chapterId',
                   element:<Chapter />
